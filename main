@@ -1,0 +1,12 @@
+%f = @(x) x.^2+x.*5+x.^3;
+f = @(x) 0.2+25*x-200*x.^2+675*x.^3-900*x.^4+400*x.^5;
+a = 0.1; %extremo inferior de la integral
+b = 0.8; %extremo superior de la integral
+n = 100000; %cantidad de trapecios a utilizar
+
+[S] = regla_trapecio(f,a,b,n);
+fprintf('El valor aproximado de la integral es: %f\n',S);
+fplot(f),grid on, hold on,axis([0 b+0.1,0 f(b)+4]);
+title('Área bajo la curva')
+plot([a, a],[0, f(a)],'r');
+plot([b, b],[0, f(b)],'r');
